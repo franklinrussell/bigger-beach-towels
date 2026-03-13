@@ -166,7 +166,7 @@ function CheckoutContent() {
           </div>
           <p className="text-white font-semibold">Mining your block...</p>
           <p className="text-slate-500 text-sm">
-            The SummitCoin PoW miner is finding a nonce with {4} leading zeros.
+            The PoW miner increments a nonce until the block's SHA-256 hash starts with {4} leading zeros.
             This may take a few seconds.
           </p>
         </div>
