@@ -1,4 +1,5 @@
-const NODE = process.env.NEXT_PUBLIC_NODE_URL ?? 'http://localhost:8080'
+export const NODE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8080'
+const NODE = NODE_URL
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Link from 'next/link'
+import { NodeStatusBanner } from './NodeStatusBanner'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -47,6 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
+        {/* Cold-start banner — visible only when node takes > 3 s to respond */}
+        <NodeStatusBanner />
+
         {/* Page content */}
         <main className="flex-1">
           {children}
@@ -56,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="border-t border-slate-800 py-6 mt-12">
           <div className="max-w-6xl mx-auto px-4 text-center text-slate-600 text-sm space-y-1">
             <p>Powered by <span className="text-sky-500 font-medium">SummitCoin (SMT)</span> — a blockchain built from scratch in Scala 3</p>
-            <p>Node running at <span className="font-mono text-slate-500">localhost:8080</span></p>
+            <p>Node at <span className="font-mono text-slate-500">{process.env.NEXT_PUBLIC_API_URL ?? 'localhost:8080'}</span></p>
           </div>
         </footer>
 

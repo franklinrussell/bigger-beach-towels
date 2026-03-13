@@ -92,7 +92,7 @@ export default function ExplorerPage() {
     try {
       setChain(await api.getChain())
     } catch {
-      setError('Cannot reach SummitCoin node at localhost:8080. Start the node first.')
+      setError(`Cannot reach SummitCoin node at ${process.env.NEXT_PUBLIC_API_URL ?? 'localhost:8080'}. Is it running?`)
     } finally {
       setLoading(false)
     }
