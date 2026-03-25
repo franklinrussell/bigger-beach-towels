@@ -1,46 +1,57 @@
 import Link from 'next/link'
 import { products, type Product } from '@/lib/products'
 
-// Mountain silhouette — pure SVG, no external images
 function MountainHero() {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950 py-20">
+    <div className="relative overflow-hidden bg-[#060911] py-24">
+      {/* Layered gradient backdrop */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-950/30 via-transparent to-slate-950/60 pointer-events-none" />
+      {/* Subtle radial glow behind text */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-sky-600/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Mountain silhouette */}
       <svg
-        viewBox="0 0 1200 180"
-        className="absolute bottom-0 left-0 w-full text-slate-800"
+        viewBox="0 0 1200 140"
+        className="absolute bottom-0 left-0 w-full text-slate-900/80"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
         <path
-          d="M0,180 L120,100 L240,140 L400,30 L520,110 L660,5 L800,80 L960,45 L1100,100 L1200,70 L1200,180 Z"
+          d="M0,140 L120,80 L240,112 L400,20 L520,90 L660,2 L800,62 L960,30 L1100,82 L1200,54 L1200,140 Z"
           fill="currentColor"
         />
-        <path d="M390,42 L400,30 L410,42 Z" fill="white" opacity="0.5" />
-        <path d="M650,18 L660,5  L670,18 Z" fill="white" opacity="0.5" />
-        <path d="M950,57 L960,45 L970,57 Z" fill="white" opacity="0.5" />
+        {/* Snow caps */}
+        <path d="M390,34 L400,20 L410,34 Z" fill="white" opacity="0.35" />
+        <path d="M650,16 L660,2  L670,16 Z" fill="white" opacity="0.35" />
+        <path d="M950,44 L960,30 L970,44 Z" fill="white" opacity="0.35" />
       </svg>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        <p className="text-sky-400 text-sm font-medium tracking-widest uppercase mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/20 bg-sky-500/5 text-sky-400 text-xs font-medium tracking-wider uppercase mb-5">
+          <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
           SummitCoin Accepted Here
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          Premium Ski &amp; Outdoors Gear
+        </div>
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight leading-tight">
+          Premium Ski &amp;{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-sky-200">
+            Outdoors
+          </span>{' '}
+          Gear
         </h1>
-        <p className="text-slate-400 text-lg max-w-xl mx-auto mb-8">
-          All prices in SMT. No credit cards. No fiat. Just pure proof-of-work cryptocurrency
-          and questionable ski advice.
+        <p className="text-slate-400 text-base md:text-lg max-w-lg mx-auto mb-8 leading-relaxed">
+          All prices in SMT. No credit cards. No fiat. Just pure proof-of-work
+          cryptocurrency and questionable ski advice.
         </p>
-        <div className="flex items-center justify-center gap-4 flex-wrap">
+        <div className="flex items-center justify-center gap-3 flex-wrap">
           <Link
             href="/faucet"
-            className="px-6 py-3 bg-sky-500 hover:bg-sky-400 text-white font-semibold rounded-xl transition-colors"
+            className="px-5 py-2.5 bg-sky-500 hover:bg-sky-400 text-white font-semibold rounded-lg text-sm transition-colors shadow-lg shadow-sky-900/40"
           >
             Get Free SMT from the Faucet
           </Link>
           <Link
             href="/explorer"
-            className="px-6 py-3 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white rounded-xl transition-colors"
+            className="px-5 py-2.5 border border-slate-700/80 hover:border-slate-500 text-slate-400 hover:text-white rounded-lg text-sm transition-colors"
           >
             Block Explorer
           </Link>
@@ -52,13 +63,13 @@ function MountainHero() {
 
 function CategoryBadge({ category }: { category: Product['category'] }) {
   const colours: Record<Product['category'], string> = {
-    'Ski Gear':   'bg-sky-900/50 text-sky-300 border-sky-800',
-    'Apres Ski':  'bg-amber-900/30 text-amber-400 border-amber-800',
-    'Outdoors':   'bg-green-900/30 text-green-400 border-green-800',
-    'Lodge Life': 'bg-purple-900/30 text-purple-400 border-purple-800',
+    'Ski Gear':   'bg-sky-950 text-sky-400 border-sky-800/60',
+    'Apres Ski':  'bg-amber-950/60 text-amber-400 border-amber-800/50',
+    'Outdoors':   'bg-emerald-950/60 text-emerald-400 border-emerald-800/50',
+    'Lodge Life': 'bg-violet-950/60 text-violet-400 border-violet-800/50',
   }
   return (
-    <span className={`text-xs px-2 py-0.5 rounded border font-medium ${colours[category]}`}>
+    <span className={`text-[10px] px-2 py-0.5 rounded border font-semibold tracking-wide ${colours[category]}`}>
       {category}
     </span>
   )
@@ -67,39 +78,39 @@ function CategoryBadge({ category }: { category: Product['category'] }) {
 function ProductCard({ product }: { product: Product }) {
   return (
     <div className={`
-      flex flex-col rounded-2xl border p-6 transition-all duration-200
-      hover:border-sky-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-950/50
+      group flex flex-col rounded-xl border p-5 transition-all duration-200
+      hover:-translate-y-1 hover:shadow-xl
       ${product.hero
-        ? 'border-sky-600/50 bg-gradient-to-br from-slate-800 to-slate-900'
-        : 'border-slate-800 bg-slate-900'}
+        ? 'border-sky-700/40 bg-gradient-to-br from-sky-950/40 to-slate-900 hover:border-sky-600/60 hover:shadow-sky-950/60'
+        : 'border-slate-800/80 bg-slate-900/60 hover:border-slate-700 hover:shadow-slate-950/80'}
     `}>
-      <div className="flex items-center gap-2 mb-3">
+      <div className="flex items-center justify-between mb-4">
         <CategoryBadge category={product.category} />
         {product.badge && (
-          <span className={`text-xs px-2 py-0.5 rounded font-bold ${
-            product.hero ? 'bg-sky-500 text-white' : 'bg-slate-700 text-slate-300'
+          <span className={`text-[10px] px-2 py-0.5 rounded font-bold tracking-wide ${
+            product.hero ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30' : 'bg-slate-800 text-slate-400 border border-slate-700'
           }`}>
             {product.badge}
           </span>
         )}
       </div>
 
-      <h2 className="text-white font-bold text-lg mb-1 leading-snug">{product.name}</h2>
-      <p className="text-sky-400 text-sm italic mb-3">{product.tagline}</p>
-      <p className="text-slate-400 text-sm leading-relaxed flex-1">{product.description}</p>
+      <h2 className="text-white font-bold text-base mb-1 leading-snug">{product.name}</h2>
+      <p className="text-sky-400/80 text-xs italic mb-2.5">{product.tagline}</p>
+      <p className="text-slate-500 text-sm leading-relaxed flex-1">{product.description}</p>
 
-      <div className="mt-6 flex items-center justify-between">
-        <div>
+      <div className="mt-5 pt-4 border-t border-slate-800/60 flex items-center justify-between">
+        <div className="flex items-baseline gap-1">
           <span className="text-2xl font-bold text-white">{product.price}</span>
-          <span className="text-sky-400 font-medium ml-1">SMT</span>
+          <span className="text-sky-400 text-sm font-semibold">SMT</span>
         </div>
         <Link
           href={`/checkout?id=${product.id}`}
           className={`
-            px-5 py-2.5 rounded-xl font-semibold text-sm transition-colors
+            px-4 py-2 rounded-lg font-semibold text-xs transition-colors
             ${product.hero
-              ? 'bg-sky-500 hover:bg-sky-400 text-white'
-              : 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 hover:border-slate-600'}
+              ? 'bg-sky-500 hover:bg-sky-400 text-white shadow-sm shadow-sky-900/50'
+              : 'bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/80 hover:border-slate-600'}
           `}
         >
           Buy with SMT
@@ -114,22 +125,26 @@ export default function ShopPage() {
     <>
       <MountainHero />
 
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="max-w-6xl mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+        {/* Features strip */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
-            { label: 'Instant Settlement',  desc: 'Transactions confirmed in the next mined block' },
-            { label: 'No Middlemen',         desc: 'Direct peer-to-peer payment on the SummitCoin chain' },
-            { label: 'Free to Try',          desc: 'Grab 25 SMT from the faucet and hit the virtual slopes' },
+            { icon: '⚡', label: 'Instant Settlement',  desc: 'Transactions confirmed in the next mined block' },
+            { icon: '🔗', label: 'No Middlemen',         desc: 'Direct peer-to-peer payment on the SummitCoin chain' },
+            { icon: '🎿', label: 'Free to Try',          desc: 'Grab 25 SMT from the faucet and hit the virtual slopes' },
           ].map(item => (
-            <div key={item.label} className="p-4 rounded-xl border border-slate-800 bg-slate-900">
-              <p className="text-sky-400 font-semibold text-sm mb-1">{item.label}</p>
-              <p className="text-slate-500 text-xs">{item.desc}</p>
+            <div key={item.label} className="px-5 py-4 rounded-xl border border-slate-800/60 bg-slate-900/40 flex items-start gap-3">
+              <span className="text-lg leading-none mt-0.5">{item.icon}</span>
+              <div>
+                <p className="text-white font-semibold text-sm mb-0.5">{item.label}</p>
+                <p className="text-slate-600 text-xs leading-relaxed">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>

@@ -67,7 +67,7 @@ function CheckoutContent() {
     <div className="max-w-lg mx-auto px-4 py-12">
 
       {/* Product summary */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 mb-6">
+      <div className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-5 mb-5">
         <p className="text-slate-500 text-xs uppercase tracking-widest mb-1">Purchasing</p>
         <h2 className="text-white font-bold text-xl mb-1">{product.name}</h2>
         <p className="text-sky-400 italic text-sm mb-4">{product.tagline}</p>
@@ -79,7 +79,7 @@ function CheckoutContent() {
 
       {/* Step: address entry */}
       {(step === 'address' || (step === 'confirm' && insufficient)) && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4">
+        <div className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-5 space-y-4">
           <h3 className="text-white font-semibold">Your SMT Wallet Address</h3>
           <input
             type="text"
@@ -118,7 +118,7 @@ function CheckoutContent() {
 
       {/* Step: confirm purchase */}
       {step === 'confirm' && !insufficient && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4">
+        <div className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-5 space-y-4">
           <h3 className="text-white font-semibold">Confirm Purchase</h3>
 
           <div className="space-y-2 text-sm">
@@ -160,7 +160,7 @@ function CheckoutContent() {
 
       {/* Step: mining / processing */}
       {step === 'processing' && (
-        <div className="rounded-2xl border border-slate-700 bg-slate-900 p-8 text-center space-y-4">
+        <div className="rounded-xl border border-slate-700/60 bg-slate-900/60 p-8 text-center space-y-4">
           <div className="flex justify-center">
             <div className="w-10 h-10 border-2 border-sky-500 border-t-transparent rounded-full animate-spin" />
           </div>
@@ -174,7 +174,7 @@ function CheckoutContent() {
 
       {/* Step: success */}
       {step === 'success' && (
-        <div className="rounded-2xl border border-green-800 bg-green-950/30 p-8 text-center space-y-4">
+        <div className="rounded-xl border border-green-800/60 bg-green-950/10 p-8 text-center space-y-4">
           <div className="text-green-400 text-5xl leading-none">&#10003;</div>
           <h3 className="text-white font-bold text-xl">Order Confirmed!</h3>
           <p className="text-slate-400 text-sm">
@@ -203,7 +203,7 @@ function CheckoutContent() {
 
       {/* Step: error */}
       {step === 'error' && (
-        <div className="rounded-2xl border border-red-900 bg-red-950/20 p-6 space-y-4">
+        <div className="rounded-xl border border-red-900/60 bg-red-950/10 p-6 space-y-4">
           <h3 className="text-red-400 font-semibold">Something went wrong</h3>
           <p className="text-slate-400 text-sm">{errMsg}</p>
           <button
@@ -221,12 +221,13 @@ function CheckoutContent() {
 export default function CheckoutPage() {
   return (
     <>
-      <div className="border-b border-slate-800 bg-slate-950 py-6">
-        <div className="max-w-lg mx-auto px-4">
-          <Link href="/" className="text-slate-500 hover:text-slate-400 text-sm">
-            &larr; Back to shop
+      <div className="border-b border-slate-800/60 bg-slate-950/80 py-5">
+        <div className="max-w-lg mx-auto px-4 flex items-center gap-3">
+          <Link href="/" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">
+            &larr; Back
           </Link>
-          <h1 className="text-white text-2xl font-bold mt-2">Checkout</h1>
+          <span className="text-slate-800">|</span>
+          <h1 className="text-white text-lg font-semibold">Checkout</h1>
         </div>
       </div>
       <Suspense fallback={<div className="text-center py-24 text-slate-500">Loading...</div>}>

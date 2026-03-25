@@ -30,7 +30,7 @@ function TxRow({ tx }: { tx: Transaction }) {
 function BlockCard({ block }: { block: Block }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="border border-slate-800 rounded-xl bg-slate-900 overflow-hidden">
+    <div className="border border-slate-800/70 rounded-xl bg-slate-900/50 overflow-hidden">
       <button
         onClick={() => setOpen(v => !v)}
         className="w-full text-left px-5 py-4 hover:bg-slate-800/50 transition-colors flex items-center justify-between gap-4"
@@ -122,15 +122,15 @@ export default function ExplorerPage() {
 
       {/* Chain stats */}
       {chain && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
           {[
             { label: 'Chain Height',    value: chain.height },
             { label: 'Total Blocks',    value: chain.length },
             { label: 'SMT in Supply',   value: `${chain.supply.toFixed(0)} SMT` },
             { label: 'Chain Valid',     value: chain.isValid ? 'Yes' : 'NO' },
           ].map(s => (
-            <div key={s.label} className="rounded-xl border border-slate-800 bg-slate-900 p-4 text-center">
-              <p className="text-slate-500 text-xs mb-1">{s.label}</p>
+            <div key={s.label} className="rounded-xl border border-slate-800/70 bg-slate-900/50 p-4 text-center">
+              <p className="text-slate-600 text-xs mb-1 tracking-wide uppercase">{s.label}</p>
               <p className={`text-xl font-bold font-mono ${s.label === 'Chain Valid' ? (chain.isValid ? 'text-green-400' : 'text-red-400') : 'text-sky-400'}`}>
                 {s.value}
               </p>
@@ -140,7 +140,7 @@ export default function ExplorerPage() {
       )}
 
       {/* Address lookup */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5 mb-8">
+      <div className="rounded-xl border border-slate-800/70 bg-slate-900/50 p-5 mb-8">
         <h2 className="text-white font-semibold mb-3">Address Balance Lookup</h2>
         <div className="flex gap-2">
           <input

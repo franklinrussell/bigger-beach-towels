@@ -44,26 +44,26 @@ export default function FaucetPage() {
     <div className="max-w-xl mx-auto px-4 py-12">
 
       {/* Header */}
-      <div className="text-center mb-10">
-        {/* Snow / faucet icon: simple SVG */}
-        <svg viewBox="0 0 60 60" className="w-16 h-16 mx-auto mb-4 text-sky-400" fill="currentColor" aria-hidden="true">
-          {/* Snowflake */}
-          <line x1="30" y1="5"  x2="30" y2="55" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-          <line x1="5"  y1="30" x2="55" y2="30" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-          <line x1="12" y1="12" x2="48" y2="48" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-          <line x1="48" y1="12" x2="12" y2="48" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-          <circle cx="30" cy="30" r="5" fill="currentColor"/>
-        </svg>
+      <div className="text-center mb-8">
+        <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center">
+          <svg viewBox="0 0 60 60" className="w-8 h-8 text-sky-400" fill="currentColor" aria-hidden="true">
+            <line x1="30" y1="5"  x2="30" y2="55" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+            <line x1="5"  y1="30" x2="55" y2="30" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+            <line x1="12" y1="12" x2="48" y2="48" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+            <line x1="48" y1="12" x2="12" y2="48" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+            <circle cx="30" cy="30" r="5" fill="currentColor"/>
+          </svg>
+        </div>
 
-        <h1 className="text-3xl font-bold text-white mb-2">First Tracks Faucet</h1>
-        <p className="text-slate-400">
+        <h1 className="text-2xl font-bold text-white mb-2">First Tracks Faucet</h1>
+        <p className="text-slate-500 text-sm">
           Get <span className="text-sky-400 font-semibold">25 SMT</span> for free to try the store.
           No sign-up. No KYC. Just proof of wanting free internet ski money.
         </p>
       </div>
 
       {state !== 'success' && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4">
+        <div className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-4">
           <div>
             <label className="block text-sm text-slate-400 mb-2">Your SMT wallet address</label>
             <input
@@ -107,7 +107,7 @@ export default function FaucetPage() {
       )}
 
       {state === 'success' && (
-        <div className="rounded-2xl border border-green-800 bg-green-950/20 p-8 space-y-5">
+        <div className="rounded-xl border border-green-800/60 bg-green-950/10 p-8 space-y-5">
           <div className="text-center">
             <div className="text-green-400 text-5xl leading-none mb-3">&#10003;</div>
             <h2 className="text-white font-bold text-xl">First tracks secured!</h2>
@@ -150,7 +150,7 @@ export default function FaucetPage() {
       )}
 
       {/* How it works note */}
-      <div className="mt-8 p-4 rounded-xl border border-slate-800 text-slate-600 text-xs space-y-1">
+      <div className="mt-6 p-4 rounded-xl border border-slate-800/60 bg-slate-900/30 text-slate-600 text-xs space-y-1">
         <p className="font-semibold text-slate-500">How it works</p>
         <p>The node&apos;s <code className="text-slate-400">summit-node</code> wallet earns 50 SMT per mined block. The faucet sends 25 of those SMT to your address and immediately mines a new block to confirm it.</p>
       </div>
